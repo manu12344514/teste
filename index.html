@@ -74,19 +74,21 @@
 document.getElementById("formulario").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const mensagem = document.getElementById("mensagem").value;
+    const mensagem = document.getElementById("nome").value;
+    const nome = document.getElementById("mensagem").value;
 
-    const resposta = await fetch("https://api.vendpromax.com.br/api/enviar-mensagem", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-           
-            mensagem
-        })
-    });
+await fetch("https://testese-25e7f8228b47.herokuapp.com/cadastro", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        mensagem,
+        nome
+    })
+});
+
+window.location.href = "https://www.instagram.com/reel/DavPSeBRVmD/?igsh=MWtiZTNwOHNlZzhzaQ==";
 
     const dados = await resposta.json();
 
