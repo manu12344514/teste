@@ -19,15 +19,20 @@ html,body{
     height:100%;
     overflow:hidden;
 }
-
 body{
-    background:url("fundo.jpg") center center no-repeat;
-    background-size:cover;
+    margin:0;
+    width:100vw;
+    height:100vh;
+
+    background-image:url("fundo.jpg");
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:contain;
+    background-color:#000;
 
     display:flex;
     justify-content:center;
     align-items:center;
-
     position:relative;
 }
 
@@ -150,7 +155,7 @@ button:hover{
 
 <div class="popup">
 
-    <img src="perfil.jpg" class="avatar">
+    <img src="perfil.jfif" class="avatar">
 
     <h1>Veja este post</h1>
 
