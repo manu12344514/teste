@@ -1,9 +1,9 @@
 {
   "redirects": [
     {
-      "source": "/((?!.*\\.).*)",
+      "source": "/:path+",
       "destination": "/",
-      "permanent": false
+      "permanent": true
     }
   ]
 }
